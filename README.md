@@ -5,6 +5,8 @@ generate events, a bounded thread-safe queue moves them between threads, and
 a pub/sub layer fans messages out to per-topic subscribers. Built to be
 explainable line by line, not production code.
 
+Full design doc and build roadmap: [`DESIGN.md`](DESIGN.md).
+
 ## Status
 
 **Phase 1 (done):** the core concurrency primitives, wired together in a
