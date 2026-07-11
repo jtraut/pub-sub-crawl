@@ -1,4 +1,4 @@
-# C_MQ: Multi-threaded Async Messaging in C
+# pub-sub-crawl: Multi-threaded Async Messaging in C
 
 A small, hand-built simulation of an embedded radio process: producer threads
 generate events, a bounded thread-safe queue moves them between threads, and
