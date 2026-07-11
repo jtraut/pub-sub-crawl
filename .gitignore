@@ -3,4 +3,5 @@ spec.md
 # Build artifacts
 c/build/
 c/radio_sim
+c/radio_sim.*
 *.o

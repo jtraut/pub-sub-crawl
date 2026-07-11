@@ -4,7 +4,14 @@ LDFLAGS := -pthread
 
 SRC_DIR := src
 BUILD_DIR := build
-TARGET := radio_sim
+
+ifeq ($(OS),Windows_NT)
+	EXE := .exe
+else
+	EXE :=
+endif
+
+TARGET := radio_sim$(EXE)
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
