@@ -5,8 +5,6 @@ generate events, a bounded thread-safe queue moves them between threads, and
 a pub/sub layer fans messages out to per-topic subscribers. Built to be
 explainable line by line, not production code.
 
-Full design doc and build roadmap: [`spec.md`](spec.md).
-
 ## Status
 
 **Phase 1 (done):** the core concurrency primitives, wired together in a
@@ -20,10 +18,9 @@ minimal demo.
 - `main.c` — spawns one producer thread and one consumer thread wired
   through a queue, printing what comes out.
 
-**Not built yet** (see `spec.md` for the full phased plan): the worker
-thread pool, the Unix domain socket transport to a Python bridge, the
-version-handshake protocol, clean `SIGINT` shutdown, and the protobuf wire
-format. Right now the demo runs until you `Ctrl+C` it.
+**Not built yet:** the worker thread pool, the Unix domain socket transport
+to a Python bridge, a version-handshake protocol, clean `SIGINT` shutdown,
+and a protobuf wire format. Right now the demo runs until you `Ctrl+C` it.
 
 ## Architecture
 
@@ -73,7 +70,7 @@ cd c
 
 You'll see a message printed once a second as the producer thread enqueues
 and the consumer thread dequeues and prints it. Stop it with `Ctrl+C`
-(there's no graceful shutdown yet — that's Phase 2 in `spec.md`).
+(there's no graceful shutdown yet).
 
 ## Project layout
 
