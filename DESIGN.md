@@ -320,6 +320,20 @@ architecture:**
 - Confirm the same v1/v2 behavior still works, now over protobuf instead of
   JSON.
 
+**Phase 7, stretch, optional, do this only if Phases 1-2 are solid — a
+hardening exercise, not new architecture (see section 10 for the design):**
+- Replace the `malloc`/`free` calls in the message hot path (the producer's
+  per-tick telemetry/alert payloads, `pubsub_publish`'s per-subscriber deep
+  copy) with acquire/release against a fixed-size, pre-allocated message
+  pool.
+- Decide and implement a pool-exhaustion policy explicitly (drop the
+  message and count/log it, matching the drop-under-backpressure spirit of
+  `msg_queue_try_enqueue`) rather than blocking or silently falling back to
+  `malloc`.
+- Confirm the rest of the system still behaves the same — this phase
+  changes *how* memory for a message is obtained, not the pub/sub or
+  transport logic built on top of it.
+
 ---
 
 ## 6. Repo layout
@@ -400,10 +414,11 @@ pub-sub-crawl/
   discrete message; a TCP/Unix-socket byte stream has no such boundary.
 - How this would extend toward what a real embedded radio + RTOS
   environment would need differently, e.g., bounded memory (no `malloc`
-  churn, a fixed message pool instead of arbitrary heap allocations),
-  ISR-safe hand-off patterns if this were interrupt-driven instead of
-  thread-driven, and priority-aware scheduling instead of a flat thread
-  pool.
+  churn, a fixed message pool instead of arbitrary heap allocations — see
+  section 10 for a concrete sketch of what that looks like in this
+  codebase), ISR-safe hand-off patterns if this were interrupt-driven
+  instead of thread-driven, and priority-aware scheduling instead of a flat
+  thread pool.
 
 That last point matters: this project is deliberately built on pthreads and
 a general-purpose OS (embedded Linux, not RTOS). Being able to say clearly
@@ -420,3 +435,96 @@ and the protobuf migration in Phase 6 — both genuinely valuable, but Phase
 1's queue and pub/sub mechanics are the part that matters most on their
 own. Don't let chasing the handshake, v2, or protobuf cost the ability to
 talk fluently about Phase 1.
+
+---
+
+## 10. Optional stretch: a pre-allocated message pool
+
+Everything so far uses ordinary `malloc`/`free` for message payloads: the
+producer heap-allocates a `telemetry_raw_t`/`alert_raw_t` per tick,
+`pubsub_publish` heap-allocates a fresh deep copy per subscriber, and each
+side frees its copy once it's done with it. That's the right amount of
+complexity for the core exercise — pthreads, queues, and pub/sub fan-out
+are the point, not memory management.
+
+But it's worth naming explicitly, as an optional exercise for later, where
+this diverges from common embedded firmware practice: a real embedded
+target typically avoids `malloc`/`free` entirely once the system is past
+init, for two concrete reasons — allocation/free time on a general-purpose
+heap allocator isn't bounded (bad for deterministic, real-time-ish
+behavior), and a long-running process that keeps allocating and freeing
+variable-lifetime, similarly-sized chunks is exactly the pattern that
+fragments a heap over time. Neither is disqualifying for a weekend
+project, but both are real, and "how would you avoid this on an actual
+embedded target" is a fair follow-up question to be able to answer with
+more than "you'd use a memory pool."
+
+### The idea
+
+Replace the mid-process `malloc`/`free` calls with acquire/release against
+a fixed-size pool of pre-allocated slots, sized once at startup:
+
+```c
+#define MSG_POOL_CAPACITY 64
+// Sized to the largest payload this pool needs to hand out; today that's
+// whichever of telemetry_msg_t / alert_msg_t is bigger.
+#define MSG_POOL_SLOT_SIZE 64
+
+typedef struct {
+    uint8_t data[MSG_POOL_SLOT_SIZE];
+    bool in_use;
+} msg_pool_slot_t;
+
+typedef struct {
+    msg_pool_slot_t slots[MSG_POOL_CAPACITY];
+    pthread_mutex_t mutex;
+} msg_pool_t;
+
+// Returns NULL if the pool is exhausted -- see "Exhaustion policy" below,
+// this must not fall back to malloc.
+void *msg_pool_acquire(msg_pool_t *pool);
+void msg_pool_release(msg_pool_t *pool, void *slot);
+```
+
+Where this would slot into the existing code:
+- The producer would `msg_pool_acquire()` instead of `malloc()` for each
+  tick's `telemetry_raw_t`/`alert_raw_t`, and the worker would
+  `msg_pool_release()` it instead of `free()` once published (see
+  `worker_pool.c`).
+- `pubsub_publish`'s per-subscriber deep copy (`pubsub.c`) is the harder
+  case: it currently mallocs a copy sized to `item->length` for an
+  arbitrary topic. A pool-backed version only works cleanly because
+  `msg_type_t` is now a small, closed set of known-size payloads
+  (telemetry/alert) — a pool can be sized to the larger of the two. That's
+  a real constraint worth surfacing on its own: a fixed-size pool implies
+  either a closed set of message shapes or a slot size sized to the worst
+  case (wasting space on smaller messages). The old `MSG_TYPE_STRING` demo
+  topic from Phase 1, with its arbitrary-length payload, is exactly the
+  shape a pool can't cleanly serve without a cap on message size.
+
+### Exhaustion policy
+
+A bounded pool needs an explicit answer for "what happens when it's
+empty," the same way the bounded queue already needed one for "what
+happens when it's full." Match the existing precedent
+(`msg_queue_try_enqueue`'s non-blocking, drop-and-move-on semantics) rather
+than introducing a new one: `msg_pool_acquire` returns `NULL` on
+exhaustion, the caller drops the message and logs/counts it, and — this is
+the part that actually matters — nothing falls back to `malloc` on the
+exhaust path. A fallback would quietly defeat the entire point (you'd
+still see occasional unbounded allocations, just rarer and harder to
+reason about), so the caller has to be able to just lose a message
+instead, the same way a slow subscriber can already lose one via
+`msg_queue_try_enqueue`.
+
+### Why this is explicitly optional
+
+This is a hardening/realism exercise, not new architecture, and it doesn't
+change the pub/sub or transport behavior built on top of it — it only
+changes where a message's memory comes from. Worth doing after Phases 1-2
+are solid (see Phase 7 in section 5), and worth being able to explain even
+if never built: what a fixed-size pool buys you (deterministic
+acquire/release time, no long-run fragmentation), what it costs
+(pre-committed worst-case memory, a closed/size-capped set of message
+shapes), and why that trade makes sense on an embedded target but wouldn't
+be the default choice for, say, a general-purpose backend service.
