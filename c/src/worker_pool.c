@@ -1,7 +1,10 @@
 #include "worker_pool.h"
+#include "radio_msg.h"
 #include "log.h"
 #include <stdlib.h>
+#include <string.h>
 #include <pthread.h>
+#include <time.h>
 
 struct worker_pool {
     pthread_t *threads;
@@ -13,12 +16,19 @@ typedef struct {
     pubsub_context_t *pubsub_ctx;
 } worker_ctx_t;
 
-static const char *topic_for_type(msg_type_t type) {
-    switch (type) {
-        case MSG_TYPE_COUNT:  return TOPIC_COUNT;
-        case MSG_TYPE_STRING: return TOPIC_STRING;
-        default:              return NULL;
-    }
+// Sequence numbers are shared across every worker (and across both
+// telemetry/alerts), so multiple workers draining the same ingest queue
+// concurrently can hand out seq/ts in an order that doesn't match arrival
+// order on the ingest queue -- that's expected, not a bug, given a flat
+// worker pool with no per-topic ordering guarantee.
+static pthread_mutex_t seq_mutex = PTHREAD_MUTEX_INITIALIZER;
+static uint32_t next_seq = 1;
+
+static uint32_t next_sequence(void) {
+    pthread_mutex_lock(&seq_mutex);
+    uint32_t seq = next_seq++;
+    pthread_mutex_unlock(&seq_mutex);
+    return seq;
 }
 
 static void *worker_routine(void *arg) {
@@ -30,25 +40,45 @@ static void *worker_routine(void *arg) {
             break;
         }
 
-        const char *topic = topic_for_type(item.type);
-        if (!topic) {
-            log_fprintf(stderr, "Worker: unknown message type %d, dropping\n", item.type);
-            if (item.length > 0) {
-                free(item.payload);
+        switch (item.type) {
+            case MSG_TYPE_TELEMETRY: {
+                const telemetry_raw_t *raw = (const telemetry_raw_t *)item.payload;
+                telemetry_msg_t msg = {
+                    .seq = next_sequence(),
+                    .ts = (int64_t)time(NULL),
+                    .battery_pct = raw->battery_pct,
+                    .rssi_dbm = raw->rssi_dbm,
+                };
+                msg_item_t pub_item = { .id = msg.seq, .type = item.type, .payload = &msg, .length = sizeof(msg) };
+                if (pubsub_publish(wctx->pubsub_ctx, TOPIC_TELEMETRY, &pub_item) < 0) {
+                    log_fprintf(stderr, "Worker: failed to publish to %s\n", TOPIC_TELEMETRY);
+                }
+                break;
             }
-            continue;
+            case MSG_TYPE_ALERT: {
+                const alert_raw_t *raw = (const alert_raw_t *)item.payload;
+                alert_msg_t msg = {
+                    .seq = next_sequence(),
+                    .ts = (int64_t)time(NULL),
+                    .antenna = raw->antenna,
+                };
+                memcpy(msg.code, raw->code, sizeof(msg.code));
+                msg_item_t pub_item = { .id = msg.seq, .type = item.type, .payload = &msg, .length = sizeof(msg) };
+                if (pubsub_publish(wctx->pubsub_ctx, TOPIC_ALERTS, &pub_item) < 0) {
+                    log_fprintf(stderr, "Worker: failed to publish to %s\n", TOPIC_ALERTS);
+                }
+                break;
+            }
+            default:
+                log_fprintf(stderr, "Worker: unknown message type %d, dropping\n", item.type);
+                break;
         }
 
-        if (pubsub_publish(wctx->pubsub_ctx, topic, &item) < 0) {
-            log_fprintf(stderr, "Worker: failed to publish to %s\n", topic);
-        }
-
-        // pubsub_publish deep-copies payload (length > 0) into each
-        // subscriber's own queue before returning, so this worker's copy
-        // is no longer needed once it's back.
-        if (item.length > 0) {
-            free(item.payload);
-        }
+        // item.payload is always the producer's heap-allocated raw struct
+        // (telemetry_raw_t/alert_raw_t); pubsub_publish deep-copies the
+        // enriched msg onto each subscriber's own queue, so this copy is
+        // done once the switch above returns.
+        free(item.payload);
     }
 
     free(wctx);

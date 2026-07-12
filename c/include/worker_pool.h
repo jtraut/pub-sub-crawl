@@ -12,8 +12,8 @@ extern "C" {
 
 // Topic names, shared with whatever publishes msg_type_t-tagged items onto
 // the ingest queue, so the string only needs to be right in one place.
-#define TOPIC_COUNT "count_topic"
-#define TOPIC_STRING "string_topic"
+#define TOPIC_TELEMETRY "telemetry"
+#define TOPIC_ALERTS "alerts"
 
 typedef struct worker_pool worker_pool_t;
 

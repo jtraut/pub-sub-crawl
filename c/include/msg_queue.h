@@ -24,8 +24,8 @@ typedef struct msg_queue msg_queue_t;
 // What kind of message this is, so a downstream worker can route it to the
 // right pubsub topic without having to inspect the payload.
 typedef enum {
-    MSG_TYPE_COUNT,
-    MSG_TYPE_STRING,
+    MSG_TYPE_TELEMETRY,
+    MSG_TYPE_ALERT,
 } msg_type_t;
 
 typedef struct msg_item {
