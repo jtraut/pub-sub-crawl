@@ -18,16 +18,17 @@ void* producer_routine(void* arg) {
         static int counter = 0;
         item.id = (uint32_t)(++counter);
         item.payload = (void *)(intptr_t)counter;
-        item.length = sizeof(int);
+        item.length = 0; //sizeof(int); // Using the int-in-pointer trick, so length is actually 0
 
         // Enqueue the message
-        if (!pubsub_publish(ctx, "count_topic", &item)) {
+        if (pubsub_publish(ctx, "count_topic", &item) < 0) {
             log_fprintf(stderr, "Failed to publish message\n");
             break;
         }
 
         // Wait for a second before publishing the next message
         sleep(1);
+        log_printf("Published message: %d, ready for next\n", counter);
     }
     return NULL;
 }
@@ -38,12 +39,12 @@ void* consumer_routine(void* arg) {
     // Initialize a queue per topic subscription...? For now at least.
     msg_queue_t *queue = msg_queue_create(0);
     log_printf("Creating consumer queue\n");
+    if (pubsub_subscribe(ctx, "count_topic", queue)) {
+        log_fprintf(stderr, "Failed to subscribe to topic\n");
+        return NULL;
+    }
     // Infinite loop to dequeue messages and process them
     while (1) {
-        if (!pubsub_subscribe(ctx, "count_topic", queue)) {
-            log_fprintf(stderr, "Failed to subscribe to topic\n");
-            break;
-        }
         msg_item_t item;
         if (!msg_queue_dequeue(queue, &item)) {
             log_fprintf(stderr, "Failed to dequeue message\n");
