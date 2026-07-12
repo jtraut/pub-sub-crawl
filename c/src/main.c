@@ -5,43 +5,55 @@
 #include <pthread.h>
 #include "msg_queue.h"
 #include "pubsub.h"
+#include "worker_pool.h"
 #include "log.h"
 
 void* producer_routine(void* arg) {
-    // Get the pubsub context
-    pubsub_context_t *ctx = (pubsub_context_t *)arg;
-    // No direct queue access required, publish will take care of that internally
+    // Producer no longer talks to pubsub directly: it just drops raw
+    // items on the shared ingest queue, and the worker pool routes them.
+    msg_queue_t *ingest_queue = (msg_queue_t *)arg;
     msg_item_t item;
     static int counter = 0;
     // Infinite loop to produce messages every second
     while (1) {
         // Create a message (example: incrementing a counter)
-        // static int counter = 0;
         item.id = (uint32_t)(++counter);
+        item.type = MSG_TYPE_COUNT;
         item.payload = (void *)(intptr_t)counter;
-        item.length = 0; //sizeof(int); // Using the int-in-pointer trick, so length is actually 0
+        item.length = 0; // int-in-pointer trick, so there's nothing to copy
 
-        // Enqueue the message
-        if (pubsub_publish(ctx, "count_topic", &item) < 0) {
-            log_fprintf(stderr, "Failed to publish message\n");
+        if (!msg_queue_enqueue(ingest_queue, &item)) {
+            log_fprintf(stderr, "Failed to enqueue count message\n");
             break;
         }
 
-        // Use multiple topics, with different data types, this time a string
+        // Use multiple topics, with different data types, this time a string.
+        // The ingest queue does a shallow struct copy (see msg_queue_enqueue),
+        // so the payload has to be heap-allocated here, not a stack buffer -
+        // a worker thread will read it later, after this stack frame's gone
+        // around the loop again. The worker frees it once it's published.
         item.id = (uint32_t)(counter + 1000);
+        item.type = MSG_TYPE_STRING;
         char msg_buf[32];
         snprintf(msg_buf, sizeof(msg_buf), "Hello, world! %d", counter);
-        item.payload = msg_buf;
-        item.length = strlen(msg_buf) + 1;
+        size_t msg_len = strlen(msg_buf) + 1;
+        char *heap_msg = malloc(msg_len);
+        if (!heap_msg) {
+            log_fprintf(stderr, "Failed to allocate string message\n");
+            break;
+        }
+        memcpy(heap_msg, msg_buf, msg_len);
+        item.payload = heap_msg;
+        item.length = msg_len;
 
-        if (pubsub_publish(ctx, "string_topic", &item) < 0) {
-            log_fprintf(stderr, "Failed to publish string message\n");
+        if (!msg_queue_enqueue(ingest_queue, &item)) {
+            log_fprintf(stderr, "Failed to enqueue string message\n");
+            free(heap_msg);
             break;
         }
 
         // Wait for a second before publishing the next message
         sleep(1);
-        // log_printf("Published message: %d, ready for next\n", counter);
     }
     return NULL;
 }
@@ -52,12 +64,12 @@ void* consumer_routine(void* arg) {
     // Initialize a queue per topic subscription...? For now at least.
     msg_queue_t *queue = msg_queue_create(0);
     // log_printf("Creating consumer queue\n");
-    if (pubsub_subscribe(ctx, "count_topic", queue)) {
+    if (pubsub_subscribe(ctx, TOPIC_COUNT, queue)) {
         log_fprintf(stderr, "Failed to subscribe to topic\n");
         return NULL;
     }
     msg_queue_t *string_queue = msg_queue_create(0);
-    if (pubsub_subscribe(ctx, "string_topic", string_queue)) {
+    if (pubsub_subscribe(ctx, TOPIC_STRING, string_queue)) {
         log_fprintf(stderr, "Failed to subscribe to string topic\n");
         return NULL;
     }
@@ -90,8 +102,18 @@ int main(void) {
     // Pubsub will manage the queues internally, so we just need a context to pass around
     pubsub_context_t *ctx = pubsub_create();
 
-    // Spawn a producer thread that publishes messages to a topic every second
-    if (pthread_create(&producer_thread, NULL, producer_routine, ctx) != 0) {
+    // Shared ingest queue: the producer drops raw items here, and the
+    // worker pool is what actually routes them into pubsub.
+    msg_queue_t *ingest_queue = msg_queue_create(0);
+
+    worker_pool_t *workers = worker_pool_create(WORKER_POOL_DEFAULT_SIZE, ingest_queue, ctx);
+    if (!workers) {
+        log_fprintf(stderr, "Failed to create worker pool\n");
+        return 1;
+    }
+
+    // Spawn a producer thread that enqueues raw messages every second
+    if (pthread_create(&producer_thread, NULL, producer_routine, ingest_queue) != 0) {
         log_fprintf(stderr, "Failed to create producer thread\n");
         return 1;
     }
@@ -104,6 +126,7 @@ int main(void) {
 
     pthread_join(producer_thread, NULL);
     pthread_join(consumer_thread, NULL);
+    worker_pool_destroy(workers);
 
     pubsub_destroy(ctx);
     return 0;

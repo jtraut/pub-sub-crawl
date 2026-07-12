@@ -21,8 +21,16 @@ extern "C" {
 // index/wraparound details.
 typedef struct msg_queue msg_queue_t;
 
+// What kind of message this is, so a downstream worker can route it to the
+// right pubsub topic without having to inspect the payload.
+typedef enum {
+    MSG_TYPE_COUNT,
+    MSG_TYPE_STRING,
+} msg_type_t;
+
 typedef struct msg_item {
     uint32_t id;
+    msg_type_t type;
     void *payload;
     size_t length;
 } msg_item_t;
