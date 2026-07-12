@@ -69,12 +69,16 @@ void* consumer_routine(void* arg) {
             break;
         }
         log_printf("Received message: %d\n", (int)(intptr_t)item.payload);
+        // int-in-pointer trick: no need to free the payload, it's just an int in disguise.
         if (!msg_queue_dequeue(string_queue, &item)) {
             log_fprintf(stderr, "Failed to dequeue string message\n");
             break;
         }
         // Process the message (example: print it)
         log_printf("Received string message: %s\n", (char *)item.payload);
+        // pubsub_publish deep-copies string payloads per subscriber (see
+        // pubsub.h), so this subscriber owns it and must free it.
+        free(item.payload);
     }
     return NULL;
 }
