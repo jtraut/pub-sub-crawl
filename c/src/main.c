@@ -13,8 +13,6 @@ void* producer_routine(void* arg) {
     // No direct queue access required, publish will take care of that internally
     msg_item_t item;
     static int counter = 0;
-    // Seed random number generator for random message selection
-    srand(time(NULL));
     // Infinite loop to produce messages every second
     while (1) {
         // Create a message (example: incrementing a counter)
@@ -43,7 +41,7 @@ void* producer_routine(void* arg) {
 
         // Wait for a second before publishing the next message
         sleep(1);
-        log_printf("Published message: %d, ready for next\n", counter);
+        // log_printf("Published message: %d, ready for next\n", counter);
     }
     return NULL;
 }
@@ -53,7 +51,7 @@ void* consumer_routine(void* arg) {
     pubsub_context_t *ctx = (pubsub_context_t *)arg;
     // Initialize a queue per topic subscription...? For now at least.
     msg_queue_t *queue = msg_queue_create(0);
-    log_printf("Creating consumer queue\n");
+    // log_printf("Creating consumer queue\n");
     if (pubsub_subscribe(ctx, "count_topic", queue)) {
         log_fprintf(stderr, "Failed to subscribe to topic\n");
         return NULL;
