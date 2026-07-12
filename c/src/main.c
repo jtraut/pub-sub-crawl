@@ -5,9 +5,12 @@
 #include <pthread.h>
 #include "msg_queue.h"
 #include "pubsub.h"
+#include "log.h"
 
 void* producer_routine(void* arg) {
-    msg_queue_t *queue = (msg_queue_t *)arg;
+    // Get the pubsub context
+    pubsub_context_t *ctx = (pubsub_context_t *)arg;
+    // No direct queue access required, publish will take care of that internally
     msg_item_t item;
     // Infinite loop to produce messages every second
     while (1) {
@@ -18,8 +21,8 @@ void* producer_routine(void* arg) {
         item.length = sizeof(int);
 
         // Enqueue the message
-        if (!msg_queue_enqueue(queue, &item)) {
-            fprintf(stderr, "Failed to enqueue message\n");
+        if (!pubsub_publish(ctx, "count_topic", &item)) {
+            log_fprintf(stderr, "Failed to publish message\n");
             break;
         }
 
@@ -31,44 +34,51 @@ void* producer_routine(void* arg) {
 
 // Define the consumer routine
 void* consumer_routine(void* arg) {
-    msg_queue_t *queue = (msg_queue_t *)arg;
+    pubsub_context_t *ctx = (pubsub_context_t *)arg;
+    // Initialize a queue per topic subscription...? For now at least.
+    msg_queue_t *queue = msg_queue_create(0);
+    log_printf("Creating consumer queue\n");
     // Infinite loop to dequeue messages and process them
     while (1) {
-        msg_item_t item;
-        if (!msg_queue_dequeue(queue, &item)) {
-            fprintf(stderr, "Failed to dequeue message\n");
+        if (!pubsub_subscribe(ctx, "count_topic", queue)) {
+            log_fprintf(stderr, "Failed to subscribe to topic\n");
             break;
         }
-
+        msg_item_t item;
+        if (!msg_queue_dequeue(queue, &item)) {
+            log_fprintf(stderr, "Failed to dequeue message\n");
+            break;
+        }
         // Process the message (example: print it)
-        printf("Received message: %d\n", (int)(intptr_t)item.payload);
+        log_printf("Received message: %d\n", (int)(intptr_t)item.payload);
     }
     return NULL;
 }
 
+// TODO: seems like there's a race condition somewhere jumbling the printf outputs
+// Added a custom log mutex wrapper to help.
 int main(void) {
     // Initial minimal first pass; no networking yet...
     pthread_t producer_thread, consumer_thread;
 
-    msg_queue_t *queue = msg_queue_create(0);
+    // Pubsub will manage the queues internally, so we just need a context to pass around
+    pubsub_context_t *ctx = pubsub_create();
 
     // Spawn a producer thread that publishes messages to a topic every second
-    if (pthread_create(&producer_thread, NULL, producer_routine, queue) != 0) {
-        fprintf(stderr, "Failed to create producer thread\n");
+    if (pthread_create(&producer_thread, NULL, producer_routine, ctx) != 0) {
+        log_fprintf(stderr, "Failed to create producer thread\n");
         return 1;
     }
 
     // Spawn a consumer thread that subscribes to the topic and dequeues messages
-    if (pthread_create(&consumer_thread, NULL, consumer_routine, queue) != 0) {
-        fprintf(stderr, "Failed to create consumer thread\n");
+    if (pthread_create(&consumer_thread, NULL, consumer_routine, ctx) != 0) {
+        log_fprintf(stderr, "Failed to create consumer thread\n");
         return 1;
     }
-
-    // TODO: wire this through pubsub instead of a raw shared queue
 
     pthread_join(producer_thread, NULL);
     pthread_join(consumer_thread, NULL);
 
-    msg_queue_destroy(queue);
+    pubsub_destroy(ctx);
     return 0;
 }

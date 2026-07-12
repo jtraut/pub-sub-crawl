@@ -1,4 +1,6 @@
 #include "pubsub.h"
+#include "log.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <pthread.h>
@@ -17,6 +19,7 @@ struct pubsub_context {
 
 // Caller must hold ctx->mutex.
 static topic_entry_t *find_topic(pubsub_context_t *ctx, const char *topic) {
+    log_printf("Searching for topic: %s\n", topic);
     for (size_t i = 0; i < ctx->topic_count; i++) {
         if (strcmp(ctx->topics[i].name, topic) == 0) {
             return &ctx->topics[i];
@@ -35,7 +38,7 @@ static topic_entry_t *find_or_create_topic(pubsub_context_t *ctx, const char *to
     if (ctx->topic_count >= PUBSUB_MAX_TOPICS) {
         return NULL;
     }
-
+    log_printf("Creating new topic: %s\n", topic);
     entry = &ctx->topics[ctx->topic_count++];
     strncpy(entry->name, topic, PUBSUB_TOPIC_NAME_MAX - 1);
     entry->name[PUBSUB_TOPIC_NAME_MAX - 1] = '\0';
@@ -44,6 +47,7 @@ static topic_entry_t *find_or_create_topic(pubsub_context_t *ctx, const char *to
 }
 
 pubsub_context_t *pubsub_create(void) {
+    log_printf("Creating pubsub context\n");
     pubsub_context_t *ctx = (pubsub_context_t *)malloc(sizeof(pubsub_context_t));
     if (!ctx) {
         return NULL;
@@ -72,6 +76,7 @@ int pubsub_subscribe(pubsub_context_t *ctx, const char *topic, msg_queue_t *queu
     if (!ctx || !topic || !queue || strlen(topic) >= PUBSUB_TOPIC_NAME_MAX) {
         return -1;
     }
+    log_printf("Subscribing to topic: %s\n", topic);
 
     pthread_mutex_lock(&ctx->mutex);
 
@@ -132,16 +137,19 @@ int pubsub_publish(pubsub_context_t *ctx, const char *topic, const msg_item_t *i
     }
 
     pthread_mutex_lock(&ctx->mutex);
-
-    topic_entry_t *entry = find_topic(ctx, topic);
+    // Note this was find_topic at first, so maybe switch back if things break
+    // But I feel like this is safer in case the publish comes before the subscribe
+    topic_entry_t *entry = find_or_create_topic(ctx, topic);
+    log_printf("Publishing to topic: %s\n", topic);
     if (!entry) {
         pthread_mutex_unlock(&ctx->mutex);
         return 0;
     }
-
+    log_printf("Topic exists: %s\n", topic);
     int delivered = 0;
     for (size_t i = 0; i < entry->subscriber_count; i++) {
         msg_item_t clone = *item;
+        log_printf("Attempting to deliver to subscriber %zu\n", i);
 
         if (item->payload && item->length > 0) {
             void *payload_copy = malloc(item->length);
@@ -160,6 +168,7 @@ int pubsub_publish(pubsub_context_t *ctx, const char *topic, const msg_item_t *i
             free(clone.payload);
         }
     }
+    log_printf("Delivered to %d subscribers\n", delivered);
 
     pthread_mutex_unlock(&ctx->mutex);
     return delivered;
