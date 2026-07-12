@@ -12,10 +12,13 @@ void* producer_routine(void* arg) {
     pubsub_context_t *ctx = (pubsub_context_t *)arg;
     // No direct queue access required, publish will take care of that internally
     msg_item_t item;
+    static int counter = 0;
+    // Seed random number generator for random message selection
+    srand(time(NULL));
     // Infinite loop to produce messages every second
     while (1) {
         // Create a message (example: incrementing a counter)
-        static int counter = 0;
+        // static int counter = 0;
         item.id = (uint32_t)(++counter);
         item.payload = (void *)(intptr_t)counter;
         item.length = 0; //sizeof(int); // Using the int-in-pointer trick, so length is actually 0
@@ -23,6 +26,18 @@ void* producer_routine(void* arg) {
         // Enqueue the message
         if (pubsub_publish(ctx, "count_topic", &item) < 0) {
             log_fprintf(stderr, "Failed to publish message\n");
+            break;
+        }
+
+        // Use multiple topics, with different data types, this time a string
+        item.id = (uint32_t)(counter + 1000);
+        char msg_buf[32];
+        snprintf(msg_buf, sizeof(msg_buf), "Hello, world! %d", counter);
+        item.payload = msg_buf;
+        item.length = strlen(msg_buf) + 1;
+
+        if (pubsub_publish(ctx, "string_topic", &item) < 0) {
+            log_fprintf(stderr, "Failed to publish string message\n");
             break;
         }
 
@@ -43,6 +58,11 @@ void* consumer_routine(void* arg) {
         log_fprintf(stderr, "Failed to subscribe to topic\n");
         return NULL;
     }
+    msg_queue_t *string_queue = msg_queue_create(0);
+    if (pubsub_subscribe(ctx, "string_topic", string_queue)) {
+        log_fprintf(stderr, "Failed to subscribe to string topic\n");
+        return NULL;
+    }
     // Infinite loop to dequeue messages and process them
     while (1) {
         msg_item_t item;
@@ -50,8 +70,13 @@ void* consumer_routine(void* arg) {
             log_fprintf(stderr, "Failed to dequeue message\n");
             break;
         }
-        // Process the message (example: print it)
         log_printf("Received message: %d\n", (int)(intptr_t)item.payload);
+        if (!msg_queue_dequeue(string_queue, &item)) {
+            log_fprintf(stderr, "Failed to dequeue string message\n");
+            break;
+        }
+        // Process the message (example: print it)
+        log_printf("Received string message: %s\n", (char *)item.payload);
     }
     return NULL;
 }
