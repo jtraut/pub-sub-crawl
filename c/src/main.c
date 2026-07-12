@@ -79,8 +79,6 @@ void* consumer_routine(void* arg) {
     return NULL;
 }
 
-// TODO: seems like there's a race condition somewhere jumbling the printf outputs
-// Added a custom log mutex wrapper to help.
 int main(void) {
     // Initial minimal first pass; no networking yet...
     pthread_t producer_thread, consumer_thread;
