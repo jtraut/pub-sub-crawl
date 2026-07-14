@@ -29,6 +29,7 @@ struct msg_queue {
     pthread_mutex_t mutex;
     pthread_cond_t not_empty;
     pthread_cond_t not_full;
+    bool shutting_down;
 };
 
 msg_queue_t *msg_queue_create(size_t capacity) {
@@ -51,6 +52,7 @@ msg_queue_t *msg_queue_create(size_t capacity) {
     queue->buffer.head = 0;
     queue->buffer.tail = 0;
     queue->buffer.size = 0;
+    queue->shutting_down = false;
 
     if (pthread_mutex_init(&queue->mutex, NULL) != 0) {
         free(queue->buffer.items);
@@ -97,9 +99,16 @@ bool msg_queue_enqueue(msg_queue_t *queue, const msg_item_t *item) {
 
     // Wait while queue is full. "Full" for a ring buffer means every slot
     // between head and tail (wrapping) is occupied, size == capacity,
-    // rather than head == tail, which is also true when empty.
-    while (queue->buffer.size >= queue->buffer.capacity) {
+    // rather than head == tail, which is also true when empty. Also bail
+    // out once shutting_down is set -- nothing's going to dequeue and free
+    // up space if the consumer side has already been told to stop.
+    while (queue->buffer.size >= queue->buffer.capacity && !queue->shutting_down) {
         pthread_cond_wait(&queue->not_full, &queue->mutex);
+    }
+
+    if (queue->shutting_down && queue->buffer.size >= queue->buffer.capacity) {
+        pthread_mutex_unlock(&queue->mutex);
+        return false;
     }
 
     // Write at tail, then advance tail one slot, wrapping around to 0 if
@@ -147,9 +156,18 @@ bool msg_queue_dequeue(msg_queue_t *queue, msg_item_t *item) {
 
     pthread_mutex_lock(&queue->mutex);
 
-    // Wait while queue is empty
-    while (queue->buffer.size == 0) {
+    // Wait while queue is empty and nobody's told it to shut down. Once
+    // shutting_down is set, stop waiting for a producer that isn't coming
+    // -- but keep whatever's already queued: only report "nothing left"
+    // (false) once size actually reaches 0, so a shutdown still lets a
+    // caller drain what was already there.
+    while (queue->buffer.size == 0 && !queue->shutting_down) {
         pthread_cond_wait(&queue->not_empty, &queue->mutex);
+    }
+
+    if (queue->buffer.size == 0) {
+        pthread_mutex_unlock(&queue->mutex);
+        return false;
     }
 
     // Read from head, then advance head one slot, wrapping around to 0 if
@@ -204,6 +222,22 @@ size_t msg_queue_size(const msg_queue_t *queue) {
     pthread_mutex_unlock((pthread_mutex_t *)&queue->mutex);
 
     return size;
+}
+
+void msg_queue_shutdown(msg_queue_t *queue) {
+    if (!queue) {
+        return;
+    }
+
+    pthread_mutex_lock(&queue->mutex);
+    queue->shutting_down = true;
+    // Broadcast, not signal: every thread parked in enqueue/dequeue on
+    // this queue needs to wake up and recheck shutting_down, not just one
+    // of them (signal would leave the rest sleeping until something else
+    // happened to nudge the predicate).
+    pthread_cond_broadcast(&queue->not_empty);
+    pthread_cond_broadcast(&queue->not_full);
+    pthread_mutex_unlock(&queue->mutex);
 }
 
 void msg_queue_clear(msg_queue_t *queue) {

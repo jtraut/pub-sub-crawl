@@ -2,6 +2,8 @@
 #include "worker_pool.h"
 #include "radio_msg.h"
 #include "handshake.h"
+#include "command.h"
+#include "shutdown.h"
 #include "log.h"
 
 #include <stdio.h>
@@ -9,17 +11,27 @@
 #include <stdbool.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 #include <time.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <poll.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+
+// How often accept()'s poll() wakes up to recheck shutdown_requested()
+// when no client is connecting -- not a protocol detail, just how
+// promptly the transport thread notices a shutdown versus how much it
+// wakes up for nothing while idle.
+#define TRANSPORT_ACCEPT_POLL_TIMEOUT_MS 200
 
 struct transport {
     pthread_t thread;
     int listen_fd;
     char socket_path[sizeof(((struct sockaddr_un *)0)->sun_path)];
     pubsub_context_t *pubsub_ctx;
+    msg_queue_t *ingest_queue;
+    radio_control_t *control;
 };
 
 static int format_telemetry(char *buf, size_t buf_size, const telemetry_msg_t *t) {
@@ -57,15 +69,19 @@ static bool write_all(int fd, const char *buf, size_t len) {
 }
 
 // Drains telemetry_sub/alerts_sub and writes each message to client_fd as
-// one JSON line, until the client disconnects. Two separate subscriber
-// queues (matching client_conn_t in DESIGN.md section 3) means this can't
-// do a single blocking dequeue, so it polls both with try_dequeue and
-// sleeps briefly between empty passes rather than busy-spinning.
-static void serve_client(int client_fd, msg_queue_t *telemetry_sub, msg_queue_t *alerts_sub) {
+// one JSON line, until the client disconnects, *peer_alive is cleared by
+// the sibling command-listener thread, or shutdown is requested. Two
+// separate subscriber queues (matching client_conn_t in DESIGN.md section
+// 3) means this can't do a single blocking dequeue, so it polls both with
+// try_dequeue and sleeps briefly between empty passes rather than
+// busy-spinning -- the same poll cadence doubles as this loop's chance to
+// notice shutdown/peer-gone.
+static void serve_client(int client_fd, msg_queue_t *telemetry_sub, msg_queue_t *alerts_sub,
+                          volatile sig_atomic_t *peer_alive) {
     char line[256];
     bool client_alive = true;
 
-    while (client_alive) {
+    while (client_alive && *peer_alive && !shutdown_requested()) {
         msg_item_t item;
         int n = -1;
 
@@ -89,7 +105,24 @@ static void serve_client(int client_fd, msg_queue_t *telemetry_sub, msg_queue_t 
 static void *transport_routine(void *arg) {
     transport_t *transport = (transport_t *)arg;
 
-    while (1) {
+    while (!shutdown_requested()) {
+        // poll() with a timeout instead of blocking in accept() directly,
+        // so this loop can notice shutdown_requested() even when nobody's
+        // connecting -- accept() itself has no way to be told "stop
+        // waiting."
+        struct pollfd listen_pfd = { .fd = transport->listen_fd, .events = POLLIN };
+        int ready = poll(&listen_pfd, 1, TRANSPORT_ACCEPT_POLL_TIMEOUT_MS);
+        if (ready < 0) {
+            if (errno == EINTR) {
+                continue;
+            }
+            log_fprintf(stderr, "Transport: poll() failed: %s\n", strerror(errno));
+            break;
+        }
+        if (ready == 0) {
+            continue; // timed out, recheck shutdown_requested()
+        }
+
         log_printf("Transport: waiting for a client to connect on %s\n", transport->socket_path);
         int client_fd = accept(transport->listen_fd, NULL, NULL);
         if (client_fd < 0) {
@@ -123,7 +156,41 @@ static void *transport_routine(void *arg) {
             pubsub_subscribe(transport->pubsub_ctx, TOPIC_ALERTS, conn.alerts_sub) == 0;
 
         if (subscribed_telemetry && subscribed_alerts) {
-            serve_client(conn.client_fd, conn.telemetry_sub, conn.alerts_sub);
+            // peer_alive is shared with the command-listener thread below:
+            // either side clears it the moment it detects the client is
+            // gone, so the other one's poll loop notices within one
+            // timeout instead of finding out only when it next tries to
+            // touch the socket itself.
+            volatile sig_atomic_t peer_alive = 1;
+
+            command_listener_args_t *cmd_args = malloc(sizeof(*cmd_args));
+            pthread_t command_thread;
+            bool command_thread_started = false;
+            if (cmd_args) {
+                cmd_args->client_fd = conn.client_fd;
+                cmd_args->ingest_queue = transport->ingest_queue;
+                cmd_args->control = transport->control;
+                cmd_args->peer_alive = &peer_alive;
+                command_thread_started =
+                    pthread_create(&command_thread, NULL, command_listener_routine, cmd_args) == 0;
+                if (!command_thread_started) {
+                    log_fprintf(stderr, "Transport: failed to start command listener\n");
+                    free(cmd_args);
+                }
+            } else {
+                log_fprintf(stderr, "Transport: failed to allocate command listener args\n");
+            }
+
+            serve_client(conn.client_fd, conn.telemetry_sub, conn.alerts_sub, &peer_alive);
+
+            // Either the client's gone or we're shutting down -- tell the
+            // command listener (if it's not already the one that noticed
+            // first) so it stops polling this fd and pthread_join below
+            // doesn't wait on a thread that has no reason to exit yet.
+            peer_alive = 0;
+            if (command_thread_started) {
+                pthread_join(command_thread, NULL);
+            }
         } else {
             log_fprintf(stderr, "Transport: failed to subscribe client to topics\n");
         }
@@ -144,8 +211,9 @@ static void *transport_routine(void *arg) {
     return NULL;
 }
 
-transport_t *transport_create(const char *socket_path, pubsub_context_t *pubsub_ctx) {
-    if (!socket_path || !pubsub_ctx) {
+transport_t *transport_create(const char *socket_path, pubsub_context_t *pubsub_ctx,
+                               msg_queue_t *ingest_queue, radio_control_t *control) {
+    if (!socket_path || !pubsub_ctx || !ingest_queue || !control) {
         return NULL;
     }
 
@@ -161,6 +229,8 @@ transport_t *transport_create(const char *socket_path, pubsub_context_t *pubsub_
     strncpy(transport->socket_path, socket_path, sizeof(transport->socket_path) - 1);
     transport->socket_path[sizeof(transport->socket_path) - 1] = '\0';
     transport->pubsub_ctx = pubsub_ctx;
+    transport->ingest_queue = ingest_queue;
+    transport->control = control;
 
     transport->listen_fd = socket(AF_UNIX, SOCK_STREAM, 0);
     if (transport->listen_fd < 0) {

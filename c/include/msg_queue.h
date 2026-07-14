@@ -39,18 +39,32 @@ typedef struct msg_item {
 msg_queue_t *msg_queue_create(size_t capacity);
 void msg_queue_destroy(msg_queue_t *queue);
 
-// Blocks on not_full until space is available.
+// Blocks on not_full until space is available or the queue is shut down.
+// Returns false if the queue was shut down before space opened up (the
+// caller should treat this the same as any other "stop" signal, not as
+// an error).
 bool msg_queue_enqueue(msg_queue_t *queue, const msg_item_t *item);
 // Returns false immediately if the queue is full, so a slow subscriber
 // can never stall other subscribers or the thread publishing to it.
 bool msg_queue_try_enqueue(msg_queue_t *queue, const msg_item_t *item);
 
-// Blocks on not_empty until an item is available.
+// Blocks on not_empty until an item is available. A shut-down queue keeps
+// returning already-queued items (true) until it's empty -- only then
+// does it return false, so a caller still gets to drain whatever was
+// already there before it has to stop.
 bool msg_queue_dequeue(msg_queue_t *queue, msg_item_t *item);
 bool msg_queue_try_dequeue(msg_queue_t *queue, msg_item_t *item);
 
 size_t msg_queue_size(const msg_queue_t *queue);
 void msg_queue_clear(msg_queue_t *queue);
+
+// Marks the queue as shutting down and broadcasts both condition
+// variables, so every thread currently blocked in msg_queue_enqueue/
+// msg_queue_dequeue on it wakes up immediately instead of waiting for a
+// producer/consumer that isn't coming. Idempotent. This is the real
+// wakeup path for clean shutdown -- callers should never need to poll a
+// queue's blocking calls against some other flag.
+void msg_queue_shutdown(msg_queue_t *queue);
 
 #ifdef __cplusplus
 }
