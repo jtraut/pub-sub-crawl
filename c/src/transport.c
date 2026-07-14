@@ -1,6 +1,7 @@
 #include "transport.h"
 #include "worker_pool.h"
 #include "radio_msg.h"
+#include "handshake.h"
 #include "log.h"
 
 #include <stdio.h>
@@ -97,33 +98,46 @@ static void *transport_routine(void *arg) {
         }
         log_printf("Transport: client connected\n");
 
-        msg_queue_t *telemetry_sub = msg_queue_create(0);
-        msg_queue_t *alerts_sub = msg_queue_create(0);
+        client_conn_t conn = {
+            .client_fd = client_fd,
+            .negotiated_version = 0,
+            .telemetry_sub = NULL,
+            .alerts_sub = NULL,
+        };
+
+        if (!handshake_perform(&conn)) {
+            log_fprintf(stderr, "Transport: handshake failed, closing connection\n");
+            close(client_fd);
+            continue;
+        }
+
+        conn.telemetry_sub = msg_queue_create(0);
+        conn.alerts_sub = msg_queue_create(0);
         // Tracked separately so a failure on one subscribe (e.g. topic
         // registry full) can't leave the other queue subscribed while we
         // go on to destroy it -- pubsub would be left holding a dangling
         // pointer to freed memory.
-        bool subscribed_telemetry = telemetry_sub &&
-            pubsub_subscribe(transport->pubsub_ctx, TOPIC_TELEMETRY, telemetry_sub) == 0;
-        bool subscribed_alerts = alerts_sub &&
-            pubsub_subscribe(transport->pubsub_ctx, TOPIC_ALERTS, alerts_sub) == 0;
+        bool subscribed_telemetry = conn.telemetry_sub &&
+            pubsub_subscribe(transport->pubsub_ctx, TOPIC_TELEMETRY, conn.telemetry_sub) == 0;
+        bool subscribed_alerts = conn.alerts_sub &&
+            pubsub_subscribe(transport->pubsub_ctx, TOPIC_ALERTS, conn.alerts_sub) == 0;
 
         if (subscribed_telemetry && subscribed_alerts) {
-            serve_client(client_fd, telemetry_sub, alerts_sub);
+            serve_client(conn.client_fd, conn.telemetry_sub, conn.alerts_sub);
         } else {
             log_fprintf(stderr, "Transport: failed to subscribe client to topics\n");
         }
 
         if (subscribed_telemetry) {
-            pubsub_unsubscribe(transport->pubsub_ctx, TOPIC_TELEMETRY, telemetry_sub);
+            pubsub_unsubscribe(transport->pubsub_ctx, TOPIC_TELEMETRY, conn.telemetry_sub);
         }
         if (subscribed_alerts) {
-            pubsub_unsubscribe(transport->pubsub_ctx, TOPIC_ALERTS, alerts_sub);
+            pubsub_unsubscribe(transport->pubsub_ctx, TOPIC_ALERTS, conn.alerts_sub);
         }
-        msg_queue_destroy(telemetry_sub);
-        msg_queue_destroy(alerts_sub);
+        msg_queue_destroy(conn.telemetry_sub);
+        msg_queue_destroy(conn.alerts_sub);
 
-        close(client_fd);
+        close(conn.client_fd);
         log_printf("Transport: client disconnected\n");
     }
 
