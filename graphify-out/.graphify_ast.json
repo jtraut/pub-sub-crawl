@@ -1,0 +1,3433 @@
+{
+  "nodes": [
+    {
+      "id": "c_include_command",
+      "label": "command.h",
+      "file_type": "code",
+      "source_file": "c/include/command.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_handshake",
+      "label": "handshake.h",
+      "file_type": "code",
+      "source_file": "c/include/handshake.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_log",
+      "label": "log.h",
+      "file_type": "code",
+      "source_file": "c/include/log.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_msg_queue",
+      "label": "msg_queue.h",
+      "file_type": "code",
+      "source_file": "c/include/msg_queue.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_pubsub",
+      "label": "pubsub.h",
+      "file_type": "code",
+      "source_file": "c/include/pubsub.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_radio_control",
+      "label": "radio_control.h",
+      "file_type": "code",
+      "source_file": "c/include/radio_control.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_radio_msg",
+      "label": "radio_msg.h",
+      "file_type": "code",
+      "source_file": "c/include/radio_msg.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_shutdown",
+      "label": "shutdown.h",
+      "file_type": "code",
+      "source_file": "c/include/shutdown.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_transport",
+      "label": "transport.h",
+      "file_type": "code",
+      "source_file": "c/include/transport.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_include_worker_pool",
+      "label": "worker_pool.h",
+      "file_type": "code",
+      "source_file": "c/include/worker_pool.h",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command",
+      "label": "command.c",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_read_command_line",
+      "label": "read_command_line()",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_c_sig_atomic_t",
+      "label": "sig_atomic_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_apply_set_interval",
+      "label": "apply_set_interval()",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_c_radio_control_t",
+      "label": "radio_control_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_apply_trigger_alert",
+      "label": "apply_trigger_alert()",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_c_msg_queue_t",
+      "label": "msg_queue_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_apply_command",
+      "label": "apply_command()",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L110",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_command_command_listener_routine",
+      "label": "command_listener_routine()",
+      "file_type": "code",
+      "source_file": "c/src/command.c",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake",
+      "label": "handshake.c",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_write_all",
+      "label": "write_all()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_read_line",
+      "label": "read_line()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_send_hello",
+      "label": "send_hello()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L68",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_parse_client_versions",
+      "label": "parse_client_versions()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_highest_common_version",
+      "label": "highest_common_version()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_send_nack",
+      "label": "send_nack()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L132",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_handshake_handshake_perform",
+      "label": "handshake_perform()",
+      "file_type": "code",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L138",
+      "_origin": "ast"
+    },
+    {
+      "id": "client_conn_t",
+      "label": "client_conn_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_log",
+      "label": "log.c",
+      "file_type": "code",
+      "source_file": "c/src/log.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_log_log_printf",
+      "label": "log_printf()",
+      "file_type": "code",
+      "source_file": "c/src/log.c",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_log_log_fprintf",
+      "label": "log_fprintf()",
+      "file_type": "code",
+      "source_file": "c/src/log.c",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "file",
+      "label": "FILE",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_main",
+      "label": "main.c",
+      "file_type": "code",
+      "source_file": "c/src/main.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_main_producer_sleep",
+      "label": "producer_sleep()",
+      "file_type": "code",
+      "source_file": "c/src/main.c",
+      "source_location": "L41",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_main_producer_routine",
+      "label": "producer_routine()",
+      "file_type": "code",
+      "source_file": "c/src/main.c",
+      "source_location": "L55",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_main_consumer_routine",
+      "label": "consumer_routine()",
+      "file_type": "code",
+      "source_file": "c/src/main.c",
+      "source_location": "L125",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_main_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "c/src/main.c",
+      "source_location": "L155",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue",
+      "label": "msg_queue.c",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_create",
+      "label": "msg_queue_create()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_c_msg_queue_t",
+      "label": "msg_queue_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_destroy",
+      "label": "msg_queue_destroy()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L81",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_enqueue",
+      "label": "msg_queue_enqueue()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L93",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_c_msg_item_t",
+      "label": "msg_item_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_try_enqueue",
+      "label": "msg_queue_try_enqueue()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L127",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_dequeue",
+      "label": "msg_queue_dequeue()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L152",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_try_dequeue",
+      "label": "msg_queue_try_dequeue()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L188",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_size",
+      "label": "msg_queue_size()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L215",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_shutdown",
+      "label": "msg_queue_shutdown()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L227",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_msg_queue_msg_queue_clear",
+      "label": "msg_queue_clear()",
+      "file_type": "code",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L243",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub",
+      "label": "pubsub.c",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_find_topic",
+      "label": "find_topic()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "topic_entry_t",
+      "label": "topic_entry_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_c_pubsub_context_t",
+      "label": "pubsub_context_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_find_or_create_topic",
+      "label": "find_or_create_topic()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_pubsub_create",
+      "label": "pubsub_create()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L49",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_pubsub_destroy",
+      "label": "pubsub_destroy()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_pubsub_subscribe",
+      "label": "pubsub_subscribe()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L75",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_c_msg_queue_t",
+      "label": "msg_queue_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_pubsub_unsubscribe",
+      "label": "pubsub_unsubscribe()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L107",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_pubsub_publish",
+      "label": "pubsub_publish()",
+      "file_type": "code",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L134",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_pubsub_c_msg_item_t",
+      "label": "msg_item_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control",
+      "label": "radio_control.c",
+      "file_type": "code",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control_radio_control_create",
+      "label": "radio_control_create()",
+      "file_type": "code",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control_c_radio_control_t",
+      "label": "radio_control_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control_radio_control_destroy",
+      "label": "radio_control_destroy()",
+      "file_type": "code",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L29",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control_radio_control_get_interval_ms",
+      "label": "radio_control_get_interval_ms()",
+      "file_type": "code",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L37",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_radio_control_radio_control_set_interval_ms",
+      "label": "radio_control_set_interval_ms()",
+      "file_type": "code",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_shutdown",
+      "label": "shutdown.c",
+      "file_type": "code",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_shutdown_shutdown_request",
+      "label": "shutdown_request()",
+      "file_type": "code",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_shutdown_shutdown_requested",
+      "label": "shutdown_requested()",
+      "file_type": "code",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport",
+      "label": "transport.c",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_format_telemetry",
+      "label": "format_telemetry()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L37",
+      "_origin": "ast"
+    },
+    {
+      "id": "telemetry_msg_t",
+      "label": "telemetry_msg_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_format_alert",
+      "label": "format_alert()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
+      "id": "alert_msg_t",
+      "label": "alert_msg_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_write_all",
+      "label": "write_all()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L53",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_serve_client",
+      "label": "serve_client()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L79",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_c_msg_queue_t",
+      "label": "msg_queue_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_c_sig_atomic_t",
+      "label": "sig_atomic_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_transport_routine",
+      "label": "transport_routine()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L105",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_transport_create",
+      "label": "transport_create()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "_origin": "ast"
+    },
+    {
+      "id": "transport_t",
+      "label": "transport_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_c_pubsub_context_t",
+      "label": "pubsub_context_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_c_radio_control_t",
+      "label": "radio_control_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_transport_transport_destroy",
+      "label": "transport_destroy()",
+      "file_type": "code",
+      "source_file": "c/src/transport.c",
+      "source_location": "L278",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool",
+      "label": "worker_pool.c",
+      "file_type": "code",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_next_sequence",
+      "label": "next_sequence()",
+      "file_type": "code",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L27",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_worker_routine",
+      "label": "worker_routine()",
+      "file_type": "code",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_worker_pool_create",
+      "label": "worker_pool_create()",
+      "file_type": "code",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "worker_pool_t",
+      "label": "worker_pool_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_c_msg_queue_t",
+      "label": "msg_queue_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_c_pubsub_context_t",
+      "label": "pubsub_context_t",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "c_src_worker_pool_worker_pool_destroy",
+      "label": "worker_pool_destroy()",
+      "file_type": "code",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L132",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_include_command",
+      "target": "c_include_msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/command.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_command",
+      "target": "c_include_radio_control",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/command.h",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_command",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/command.h",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_handshake",
+      "target": "c_include_msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/handshake.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_log",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/log.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_msg_queue",
+      "target": "stdbool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/msg_queue.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_msg_queue",
+      "target": "stddef",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/msg_queue.h",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_msg_queue",
+      "target": "stdint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/msg_queue.h",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_pubsub",
+      "target": "c_include_msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/pubsub.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_radio_control",
+      "target": "stdint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/radio_control.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_radio_msg",
+      "target": "stdint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/radio_msg.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_shutdown",
+      "target": "stdbool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/shutdown.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_transport",
+      "target": "c_include_pubsub",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/transport.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_transport",
+      "target": "c_include_radio_control",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/transport.h",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_worker_pool",
+      "target": "c_include_msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/worker_pool.h",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_include_worker_pool",
+      "target": "c_include_pubsub",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/include/worker_pool.h",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "command",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "radio_msg",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "shutdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "errno",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "unistd",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "poll",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command",
+      "target": "c_src_command_read_command_line",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_read_command_line",
+      "target": "c_src_command_c_sig_atomic_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_command",
+      "target": "c_src_command_apply_set_interval",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_set_interval",
+      "target": "c_src_command_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L66",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_command",
+      "target": "c_src_command_apply_trigger_alert",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_trigger_alert",
+      "target": "c_src_command_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L77",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_command",
+      "target": "c_src_command_apply_command",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_command",
+      "target": "c_src_command_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L110",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_command_apply_command",
+      "target": "c_src_command_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L110",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_command",
+      "target": "c_src_command_command_listener_routine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_command",
+      "target": "c_src_command_apply_set_interval",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_command",
+      "target": "c_src_command_apply_trigger_alert",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_command_listener_routine",
+      "target": "c_src_command_read_command_line",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_command_listener_routine",
+      "target": "c_src_command_apply_command",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/command.c",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "handshake",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "errno",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "unistd",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_write_all",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_read_line",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_send_hello",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_parse_client_versions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_highest_common_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_send_nack",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake",
+      "target": "c_src_handshake_handshake_perform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L138",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "client_conn_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L138",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_handshake_send_hello",
+      "target": "c_src_handshake_write_all",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_send_nack",
+      "target": "c_src_handshake_write_all",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_send_hello",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_read_line",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_parse_client_versions",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_send_nack",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_highest_common_version",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_handshake_write_all",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/handshake.c",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log",
+      "target": "stdarg",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log",
+      "target": "c_src_log_log_printf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log",
+      "target": "c_src_log_log_fprintf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_log_log_fprintf",
+      "target": "file",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/log.c",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_main",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "stdint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "unistd",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "pubsub",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "worker_pool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "radio_msg",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "transport",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "radio_control",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "shutdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "c_src_main_producer_sleep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "c_src_main_producer_routine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "c_src_main_consumer_routine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main",
+      "target": "c_src_main_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_main_producer_sleep",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/main.c",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "msg_queue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_create",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_destroy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_destroy",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L81",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_enqueue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_enqueue",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L93",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_enqueue",
+      "target": "c_src_msg_queue_c_msg_item_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L93",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_try_enqueue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_try_enqueue",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L127",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_try_enqueue",
+      "target": "c_src_msg_queue_c_msg_item_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L127",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_dequeue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L152",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_dequeue",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L152",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_dequeue",
+      "target": "c_src_msg_queue_c_msg_item_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L152",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_try_dequeue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_try_dequeue",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L188",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_try_dequeue",
+      "target": "c_src_msg_queue_c_msg_item_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L188",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_size",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L215",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_size",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L215",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_shutdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L227",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_shutdown",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L227",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_msg_queue",
+      "target": "c_src_msg_queue_msg_queue_clear",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_msg_queue_msg_queue_clear",
+      "target": "c_src_msg_queue_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/msg_queue.c",
+      "source_location": "L243",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "pubsub",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_find_topic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_find_topic",
+      "target": "topic_entry_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_pubsub_find_topic",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_find_or_create_topic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_find_or_create_topic",
+      "target": "topic_entry_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_pubsub_find_or_create_topic",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_pubsub_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_create",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L49",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_pubsub_destroy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_destroy",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L65",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_pubsub_subscribe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_subscribe",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L75",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub_pubsub_subscribe",
+      "target": "c_src_pubsub_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L75",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_pubsub_unsubscribe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_unsubscribe",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L107",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub_pubsub_unsubscribe",
+      "target": "c_src_pubsub_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L107",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub",
+      "target": "c_src_pubsub_pubsub_publish",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_publish",
+      "target": "c_src_pubsub_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L134",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub_pubsub_publish",
+      "target": "c_src_pubsub_c_msg_item_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L134",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_pubsub_find_or_create_topic",
+      "target": "c_src_pubsub_find_topic",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_subscribe",
+      "target": "c_src_pubsub_find_or_create_topic",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_unsubscribe",
+      "target": "c_src_pubsub_find_topic",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_publish",
+      "target": "c_src_pubsub_find_or_create_topic",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "radio_control",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "c_src_radio_control_radio_control_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control_radio_control_create",
+      "target": "c_src_radio_control_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "c_src_radio_control_radio_control_destroy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control_radio_control_destroy",
+      "target": "c_src_radio_control_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L29",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "c_src_radio_control_radio_control_get_interval_ms",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control_radio_control_get_interval_ms",
+      "target": "c_src_radio_control_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L37",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_radio_control",
+      "target": "c_src_radio_control_radio_control_set_interval_ms",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_radio_control_radio_control_set_interval_ms",
+      "target": "c_src_radio_control_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/radio_control.c",
+      "source_location": "L44",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_shutdown",
+      "target": "shutdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_shutdown",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_shutdown",
+      "target": "c_src_shutdown_shutdown_request",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_shutdown",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/shutdown.c",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "transport",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "worker_pool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "radio_msg",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "handshake",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "command",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "shutdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "stdio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "stdbool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "errno",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "unistd",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "poll",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "socket",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "un",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_format_telemetry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_format_telemetry",
+      "target": "telemetry_msg_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L37",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_format_alert",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_format_alert",
+      "target": "alert_msg_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L44",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_write_all",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_serve_client",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L79",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L79",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_c_sig_atomic_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L79",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_transport_routine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_transport_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "transport_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "c_src_transport_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "c_src_transport_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "c_src_transport_c_radio_control_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L214",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport",
+      "target": "c_src_transport_transport_destroy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_destroy",
+      "target": "transport_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L278",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_format_telemetry",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_format_alert",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_transport_write_all",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_transport_serve_client",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/transport.c",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "worker_pool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "radio_msg",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "log",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "stdlib",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "string",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "pthread",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "c_src_worker_pool_next_sequence",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "c_src_worker_pool_worker_routine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "c_src_worker_pool_worker_pool_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool_worker_pool_create",
+      "target": "worker_pool_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L88",
+      "weight": 1.0,
+      "context": "return_type"
+    },
+    {
+      "source": "c_src_worker_pool_worker_pool_create",
+      "target": "c_src_worker_pool_c_msg_queue_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L88",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_worker_pool_worker_pool_create",
+      "target": "c_src_worker_pool_c_pubsub_context_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L88",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_worker_pool",
+      "target": "c_src_worker_pool_worker_pool_destroy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool_worker_pool_destroy",
+      "target": "worker_pool_t",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L132",
+      "weight": 1.0,
+      "context": "parameter_type"
+    },
+    {
+      "source": "c_src_worker_pool_worker_routine",
+      "target": "c_src_worker_pool_next_sequence",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_read_command_line",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_set_interval",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_set_interval",
+      "target": "c_src_radio_control_radio_control_set_interval_ms",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_set_interval",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_trigger_alert",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_trigger_alert",
+      "target": "c_src_msg_queue_msg_queue_try_enqueue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_trigger_alert",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_command_apply_command",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/command.c",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/handshake.c",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_handshake_handshake_perform",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/handshake.c",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_sleep",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_msg_queue_msg_queue_enqueue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_msg_queue_msg_queue_try_enqueue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_producer_routine",
+      "target": "c_src_radio_control_radio_control_get_interval_ms",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_consumer_routine",
+      "target": "c_src_msg_queue_msg_queue_dequeue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_consumer_routine",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_consumer_routine",
+      "target": "c_src_msg_queue_msg_queue_try_dequeue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_pubsub_pubsub_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_msg_queue_msg_queue_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_radio_control_radio_control_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_worker_pool_worker_pool_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_transport_transport_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_pubsub_pubsub_subscribe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L210",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_shutdown_shutdown_request",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L242",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_msg_queue_msg_queue_shutdown",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_worker_pool_worker_pool_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_pubsub_pubsub_unsubscribe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L256",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_msg_queue_msg_queue_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_transport_transport_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_radio_control_radio_control_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L263",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_main_main",
+      "target": "c_src_pubsub_pubsub_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/main.c",
+      "source_location": "L264",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_subscribe",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_pubsub_pubsub_publish",
+      "target": "c_src_msg_queue_msg_queue_try_enqueue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/pubsub.c",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_serve_client",
+      "target": "c_src_msg_queue_msg_queue_try_dequeue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_shutdown_shutdown_requested",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_handshake_handshake_perform",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_msg_queue_msg_queue_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_pubsub_pubsub_subscribe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_pubsub_pubsub_unsubscribe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L199",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_routine",
+      "target": "c_src_msg_queue_msg_queue_destroy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L225",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_transport_transport_create",
+      "target": "c_src_log_log_printf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/transport.c",
+      "source_location": "L274",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool_worker_routine",
+      "target": "c_src_msg_queue_msg_queue_dequeue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool_worker_routine",
+      "target": "c_src_pubsub_pubsub_publish",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "c_src_worker_pool_worker_routine",
+      "target": "c_src_log_log_fprintf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "c/src/worker_pool.c",
+      "source_location": "L54",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

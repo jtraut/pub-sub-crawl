@@ -5,3 +5,6 @@ c/build/
 c/radio_sim
 c/radio_sim.*
 *.o
+
+# Graphify
+graphify-out/.graphify_python
