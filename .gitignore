@@ -8,3 +8,4 @@ c/radio_sim.*
 
 # Graphify
 graphify-out/.graphify_python
+graphify-out/manifest.json
